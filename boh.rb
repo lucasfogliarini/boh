@@ -1,3 +1,16 @@
+#generators
+file 'lib/generators/views_generator.rb', <<-RUBY
+class ViewsGenerator < Rails::Generators::NamedBase
+  def generate
+    create_file "app/views/\#{name}/edit.html.slim","= @\#{name}.inspect"
+    create_file "app/views/\#{name}/index.html.slim","- @\#{name}.each do |e|
+  p = e.inspect"
+    create_file "app/views/\#{name}/new.html.slim","= @\#{name}.inspect"
+    create_file "app/views/\#{name}/show.html.slim","= @\#{name}.inspect"
+  end
+end
+RUBY
+
 #configurations
 environment "config.action_mailer.delivery_method = :letter_opener
 config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
@@ -83,8 +96,6 @@ gem_group :development, :test do
   gem 'rspec-rails'
   gem 'letter_opener'
 end
-#pundit = yes?("Pundit?")
-#gem 'pundit' if pundit
 
 run "bundle update"
 
