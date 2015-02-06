@@ -160,7 +160,7 @@ YML
   if devise
     generate("devise:install")
     inject_into_file 'config/initializers/devise.rb', force: true, after: "Devise.setup do |config|" do
-      "\n\tconfig.scoped_views = false"
+      "\n\tconfig.scoped_views = true"
     end
   end
 
