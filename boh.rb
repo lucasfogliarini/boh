@@ -69,7 +69,14 @@ html
     = render 'organisms/footer'
 RUBY
 
-#gems
+#gemfile
+ruby_version_default = "2.2.0"
+ruby_version = ask("ruby version(press enter to apply #{ruby_version_default}):")
+ruby_version = ruby_version_default if ruby_version.empty?
+inject_into_file 'Gemfile', after: "'https://rubygems.org'" do
+  "\n\nruby '#{ruby_version}'"
+end
+
 gem 'pg'
 gem 'bootstrap-sass'
 gem 'initjs'
