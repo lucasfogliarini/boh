@@ -104,6 +104,10 @@ gem_group :development, :test do
   gem 'letter_opener'
 end
 
+gem_group :production do
+  gem 'rails_12factor'
+end
+
 run "bundle update"
 
 after_bundle do
